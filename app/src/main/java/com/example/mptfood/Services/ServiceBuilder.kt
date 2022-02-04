@@ -1,13 +1,15 @@
 package com.example.food.services
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
-    private const val URL = "https://localhost:44374/api/"
+    private const val URL = "http://192.168.1.67:5000/api/"
 
-    private val okHttp = OkHttpClient.Builder()
+    private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    private val okHttp = OkHttpClient.Builder().addInterceptor(logger)
 
     private val builder = Retrofit.Builder().baseUrl(URL)
         .addConverterFactory(GsonConverterFactory.create())

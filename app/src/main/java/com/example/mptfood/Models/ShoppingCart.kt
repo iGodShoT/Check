@@ -9,54 +9,53 @@ class ShoppingCart {
 
     companion object{
 
-
-
         fun addItem(cartItem: CartItem, quantityOf : Int){
 
-            val cart = ShoppingCart.getCart()
-
+            val cart = getCart()
             val targetItem = cart.singleOrNull{ it.Product!!.ID == cartItem.Product!!.ID}
-            if (targetItem == null){
+
+            if (targetItem == null)
+            {
                 cartItem.Quantity = quantityOf
                 cart.add(cartItem)
-            }else{
-                targetItem.Quantity += quantityOf
             }
-            ShoppingCart.saveCart(cart)
+            else
+                targetItem.Quantity += quantityOf
+
+            saveCart(cart)
         }
 
         fun removeItem(cartItem: CartItem){
-            val cart = ShoppingCart.getCart()
+            val cart = getCart()
 
             val targetItem = cart.singleOrNull{ it.Product!!.ID == cartItem.Product!!.ID}
-            if (targetItem != null){
 
+            if (targetItem != null)
                 cart.remove(targetItem)
-            }
-            ShoppingCart.saveCart(cart)
+
+            saveCart(cart)
         }
 
-
-
         fun addCount(cartItem: CartItem){
-            val cart = ShoppingCart.getCart()
-
+            val cart = getCart()
             val targetItem = cart.singleOrNull{ it.Product!!.ID == cartItem.Product!!.ID}
-            if (targetItem !=null){
+
+            if (targetItem !=null)
                 targetItem.Quantity++
-            }
-            ShoppingCart.saveCart(cart)
+
+            saveCart(cart)
         }
 
         fun removeCount(cartItem: CartItem){
-            val cart = ShoppingCart.getCart()
+            val cart = getCart()
 
             val targetItem = cart.singleOrNull{ it.Product!!.ID == cartItem.Product!!.ID}
-            if (targetItem !=null){
+            if (targetItem !=null)
+            {
                 targetItem.Quantity--
                 d("as", "qq: ${targetItem.Quantity}")
             }
-            ShoppingCart.saveCart(cart)
+            saveCart(cart)
         }
 
         fun saveCart(cart: MutableList<CartItem>) {
@@ -70,7 +69,7 @@ class ShoppingCart {
 
         fun getShoppingCartSize() : Int {
             var cartSize = 0
-            ShoppingCart.getCart().forEach {
+            getCart().forEach {
                 cartSize += it.Quantity
             }
             return cartSize

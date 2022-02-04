@@ -8,6 +8,7 @@ data class Product
         var ID : Int = 0,
         var Name: String? = null,
         var Price: Int = 0,
-        var QuantityAvailable: Int = 0
+        var QuantityAvailable: Int = 0,
+        var Image: String? = null
 
     ) : Parcelable

@@ -11,7 +11,8 @@
         android:id="@+id/frames_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_menu"/>
+        android:layout_above="@id/bottom_menu"
+        android:background="@color/white"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_menu"

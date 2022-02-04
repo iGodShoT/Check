@@ -1,8 +1,10 @@
 package com.example.mptfood
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -33,12 +35,10 @@ class DetailActivity : AppCompatActivity() {
 
 
         title.text = product?.Name
-        description.text = product?.Description
         product_price.text = product?.Price.toString()
-
-        Picasso.get().load(product?.ImgUrl).fit().centerInside()
-            .placeholder(R.drawable.ic_food)
-            .error(R.drawable.ic_launcher_foreground).into(product_img)
+        val imageBytes = Base64.decode(product?.Image, Base64.DEFAULT)
+        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        product_img.setImageBitmap(decodedImage)
 
         Observable.create(ObservableOnSubscribe<MutableList<CartItem>> {
 
@@ -81,9 +81,7 @@ class DetailActivity : AppCompatActivity() {
         countPrice()
     }
 
-    private fun setText() {
-        Quantity.setText(num.toString()+"")
-    }
+    private fun setText() = Quantity.setText(num.toString()+"")
 
 
 }

@@ -8,11 +8,17 @@ interface ApiServices {
     @GET("Products")
     fun fetchAllProducts() : Call<List<ItemOfList>>
 
+    @GET("orders")
+    fun fetchAllOrders() : Call<List<Order>>
 
+    @POST("orders")
+    fun addOrder(@Body newOrder : Order) : Call<Order>
 
-    //@POST("orders/add")
-    //fun addOrder(@Body newOrder : ItemOfOrders) : Call<ItemOfOrders>
+    @GET("users")
+    fun fetchAllUsers() : Call<List<Client>>
 
+    @POST("OrderContents")
+    fun addOrderProduct(@Body newOrderProd : OrderContent) : Call <OrderContent>
 
     //@PUT("users/{id_User}")
     //fun updateUser(

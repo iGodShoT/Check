@@ -1,14 +1,20 @@
 package com.example.mptfood.Models
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
 data class ItemOfList(
-    val ID : String,
+    @SerializedName("id")
+    val ID : Int,
+    @SerializedName("name")
     val Name: String,
-    val Description: String,
+    @SerializedName("price")
     val Price : Int,
-    val ImgUrl : String
+    @SerializedName("quantityAvailable")
+    val QuantityAvailable : Int,
+    @SerializedName("image")
+    val Image : String
 ) : Parcelable

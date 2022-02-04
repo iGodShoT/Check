@@ -1,12 +1,19 @@
 package com.example.food.services
 
 import com.example.mptfood.Models.*
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiServices {
     @GET("Products")
     fun fetchAllProducts() : Call<List<ItemOfList>>
+
+    @GET("clients/search/{Email}")
+    fun getByEmail(@Path("Email") Email : String) : Call<Client>
+
+    @POST("clients")
+    fun addClient(@Body newClient : Client) : Call<Client>
 
     @GET("orders")
     fun fetchAllOrders() : Call<List<Order>>

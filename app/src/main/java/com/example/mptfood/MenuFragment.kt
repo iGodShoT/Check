@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food.*
 import com.example.food.services.ApiServices
+import com.example.food.services.ServiceBuilder
 import com.example.mptfood.Models.ItemOfList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,12 +22,12 @@ class MenuFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var progressBar: ProgressBar
-    val URL = "http://192.168.1.67:5000/api/"
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val retrofit = Retrofit.Builder()
-            .baseUrl(URL)
+            .baseUrl(ServiceBuilder.URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val api = retrofit.create(ApiServices::class.java)

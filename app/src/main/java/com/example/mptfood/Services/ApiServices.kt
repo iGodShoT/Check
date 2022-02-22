@@ -15,8 +15,8 @@ interface ApiServices {
     @POST("clients")
     fun addClient(@Body newClient : Client) : Call<Client>
 
-    @GET("orders")
-    fun fetchAllOrders() : Call<List<Order>>
+    @GET("orders/search/{client_id}")
+    fun fetchAllOrders(@Path("client_id") client_id : Int) : Call<List<Order>>
 
     @POST("orders")
     fun addOrder(@Body newOrder : Order) : Call<Order>
@@ -27,10 +27,10 @@ interface ApiServices {
     @POST("OrderContents")
     fun addOrderProduct(@Body newOrderProd : OrderContent) : Call <OrderContent>
 
-    //@PUT("users/{id_User}")
-    //fun updateUser(
-          //  @Path("id_User") id: Int?,
-           // @Body updateUser: ItemOfUserLogin
-   //) : Call<ItemOfUserLogin>
+    @GET("OrderContents/search/{order_id}")
+    fun getOrderProductByOrder(@Path("order_id") order_id : Int) : Call<List<OrderContent>>
+
+    @GET("Products/{id}")
+    fun getProductById(@Path("id") id : Int) : Call<ItemOfList>
 
 }

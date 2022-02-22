@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
-    private const val URL = "http://192.168.1.67:5000/api/"
+    public const val URL = "https://cybersport.ru.com/api/"
 
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     private val okHttp = OkHttpClient.Builder().addInterceptor(logger)

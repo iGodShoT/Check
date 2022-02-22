@@ -21,6 +21,6 @@ data class Order
     @SerializedName("date")
         var Date: String? = null,
     @SerializedName("total")
-        var Total: Double = 0.0,
+        var Total: Double = 0.0
 
     ) : Parcelable

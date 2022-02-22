@@ -1,6 +1,5 @@
 package com.example.mptfood.Models
 
-import com.example.mptfood.Models.ItemOfList
 
 class CartItem
     (
